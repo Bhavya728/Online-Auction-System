@@ -1,0 +1,113 @@
+/* === General Styles === */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(-45deg, #e0f7fa, #fce4ec, #fffde7, #e8f5e9);
+  background-size: 400% 400%;
+  animation: backgroundMove 15s ease infinite;
+  margin: 0;
+  padding: 40px;
+}
+
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 40px;
+}
+
+/* === Responsive Grid Layout === */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* === Card Styling === */
+.card {
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  box-sizing: border-box;
+  transition: transform 0.2s ease-in-out;
+  animation: fadeInUp 0.8s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card-title,
+.card h2,
+.card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #34495e;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* === Form Elements === */
+.card input,
+.card select,
+.card textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  transition: border-color 0.3s ease;
+}
+
+.card input:focus,
+.card select:focus,
+.card textarea:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+/* === Button === */
+.btn,
+.card button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.btn:hover,
+.card button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* === Animations === */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes backgroundMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

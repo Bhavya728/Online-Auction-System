@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Online Auction System - Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>Online Auction System - Routes Dashboard</h1>
+
+  <div class="card-container">
+    <!-- Register User Card -->
+    <div class="card">
+      <div class="card-title">Register User</div>
+      <input type="text" id="fullName" placeholder="Full Name" />
+      <input type="email" id="email" placeholder="Email" />
+      <input type="text" id="passwordHash" placeholder="Password" />
+      <input type="text" id="address" placeholder="Address" />
+      <button class="btn" onclick="registerUser()">Register</button>
+    </div>
+
+    <!-- Add Phone Number Card -->
+    <div class="card">
+      <div class="card-title">Add Phone Number</div>
+      
+      <input type="email" id="email2" placeholder="Email" />
+      <input type="text" id="phoneNumber2" placeholder="Phone Number" />
+      <button class="btn" onclick="addPhoneNumber()">Add Phone</button>
+    </div>
+
+    <!-- Placeholder cards -->
+    <!-- Add other routes as needed -->
+    <!-- Create Wallet Card -->
+<div class="card">
+  <div class="card-title">Create Wallet</div>
+  <input type="email" id="walletEmail" placeholder="User Email" />
+  <input type="number" id="walletBalance" placeholder="Initial Balance" />
+  <input type="text" id="walletCurrency" placeholder="Currency (e.g. USD, INR)" />
+  <button class="btn" onclick="createWallet()">Create Wallet</button>
+</div>
+
+    <!-- Repeat for Routes 4 to 17 -->
+<!-- Wallet Transactions Card -->
+<div class="card">
+  <div class="card-title">Add Wallet Transaction</div>
+  <input type="number" id="walletId4" placeholder="Wallet ID" />
+  <input type="number" id="amount4" placeholder="Amount" />
+  <select id="transactionType4">
+    <option value="deposit">Deposit</option>
+    <option value="withdrawal">Withdrawal</option>
+    <option value="transfer">Transfer</option>
+  </select>
+  <button class="btn" onclick="addWalletTransaction()">Add Transaction</button>
+  <div id="walletTransactionMessage4"></div>
+</div>
+
+<!-- Make Payment Card -->
+<div class="card">
+  <div class="card-title">Make Payment</div>
+  <input type="email" id="paymentEmail" placeholder="User Email" />
+  <input type="number" id="paymentAmount" placeholder="Amount" />
+  <input type="text" id="transactionRef" placeholder="Transaction Reference" />
+  <select id="refundEligible">
+    <option value="">Refund Eligible?</option>
+    <option value="1">Yes</option>
+    <option value="0">No</option>
+  </select>
+  <button class="btn" onclick="makePayment()">Make Payment</button>
+</div>
+
+<!--route 6-->
+<!-- Notification Card -->
+<div class="card">
+  <div class="card-title">Send Notification</div>
+  <input type="email" id="email6" placeholder="User Email" />
+  <textarea id="message6" placeholder="Notification Message"></textarea>
+  <select id="isRead6">
+    <option value="0">Unread</option>
+    <option value="1">Read</option>
+  </select>
+  <button class="btn" onclick="sendNotification()">Send Notification</button>
+  <div id="notificationMessage6"></div>
+</div>
+<!--route 7-->
+    <div class="card">
+      <div class="card-title">Create Category</div>
+      <input type="number" id="parentCategoryId7" placeholder="Parent Category ID (optional)" />
+      <input type="text" id="name7" placeholder="Category Name" />
+      <input type="text" id="description7" placeholder="Description" />
+      <select id="isActive7">
+        <option value="1">Active</option>
+        <option value="0">Inactive</option>
+      </select>
+      <button class="btn" onclick="createCategory()">Create</button>
+    </div>
+
+
+<!-- Route 8: Create Item -->
+<div class="card">
+  <div class="card-title">Create Item</div>
+  <input type="text" id="itemName" placeholder="Item Name" />
+  <input type="text" id="itemDescription" placeholder="Description" />
+  <input type="text" id="categoryName" placeholder="Category Name" />
+  <input type="email" id="sellerEmail" placeholder="Seller Email" />
+  <input type="number" id="basePrice" placeholder="Base Price" />
+  <input type="number" id="reservePrice" placeholder="Reserve Price" />
+  <button class="btn" onclick="createItem()">Create Item</button>
+</div>
+
+
+<!-- Route 9: Add Image to Item -->
+<div class="card">
+  <div class="card-title">Add Image to Item</div>
+  <input type="text" id="itemName9" placeholder="Item Name" />
+  <input type="url" id="imageUrl9" placeholder="Image URL" />
+  <button class="btn" onclick="addItemImage()">Add Image</button>
+  <div id="imageMessage9"></div>
+</div>
+
+
+    
+<!-- Route 10: Add Item Specification -->
+<div class="card">
+  <div class="card-title"> Add Item Specification</div>
+  <input type="text" id="itemName10" placeholder="Item Name" />
+  <input type="text" id="specKey10" placeholder="Specification Key" />
+  <input type="text" id="specValue10" placeholder="Specification Value" />
+  <button class="btn" onclick="addItemSpecification()">Add Specification</button>
+  <div id="specMessage10" style="margin-top: 10px;"></div>
+</div>
+
+
+<!-- Route 11: Add Auction Meta -->
+<div class="card">
+  <div class="card-title">Add Auction Meta</div>
+  <input type="text" id="itemName11" placeholder="Item Name" />
+  <input type="datetime-local" id="startTimestamp11" />
+  <input type="datetime-local" id="endTimestamp11" />
+  <input type="number" step="0.01" id="startPrice11" placeholder="Start Price" />
+  <input type="text" id="auctionType11" placeholder="Auction Type" />
+  <button class="btn" onclick="addAuctionMeta()">Add Auction Meta</button>
+  <div id="auctionMetaMessage11"></div>
+</div>
+
+
+<!-- Auction Session Card -->
+<div class="card">
+  <div class="card-title">Create Auction Session</div>
+  <input type="text" id="itemName12" placeholder="Item Name" />
+  <input type="number" id="bidCount12" placeholder="Bid Count" />
+  <button class="btn" onclick="addAuctionSession()">Create Auction Session</button>
+  <div id="auctionSessionMessage12"></div>
+</div>
+
+
+<!-- Card 13: Link Item to Auction -->
+<div class="card" id="card13">
+  <h2>Link Item to Auction</h2>
+  <label for="itemName13">Item Name:</label>
+  <input type="text" id="itemName13" placeholder="Enter item name" />
+
+  <label for="auctionTitle13">Auction Title:</label>
+  <input type="text" id="auctionTitle13" placeholder="Enter auction title" />
+
+  <button onclick="linkItemToAuction()">Link</button>
+  <p id="itemAuctionMessage13"></p>
+</div>
+<!-- Card 14: Place a Bid -->
+<div class="card">
+  <h3>Place a Bid</h3>
+  <input type="text" id="email14" placeholder="User Email">
+  <input type="text" id="itemName14" placeholder="Item Name">
+  <input type="number" id="bidAmount14" placeholder="Bid Amount">
+  <button onclick="placeBid()">Submit Bid</button>
+  <p id="bidMessage14"></p>
+</div>
+
+<!-- Add this card to your HTML -->
+<!-- Route 15: Record Transaction -->
+<div class="card">
+  <div class="card-title">Record Transaction</div>
+  <input type="email" id="email15" placeholder="Buyer Email" />
+  <input type="text" id="itemName15" placeholder="Item Name" />
+  <input type="number" id="amount15" placeholder="Amount" step="0.01" />
+  <input type="number" id="fee15" placeholder="Transaction Fee" step="0.01" />
+  <input type="text" id="currency15" placeholder="Currency (e.g. USD)" value="USD" />
+  <button class="btn" onclick="addTransaction()">Record Transaction</button>
+  <div id="transactionMessage15" style="margin-top: 10px;"></div>
+</div>
+
+
+<!-- Review Card -->
+<div class="card">
+  <div class="card-title">Add Review</div>
+  <input type="email" id="email17" placeholder="User Email" />
+  <input type="text" id="itemName17" placeholder="Item Name" />
+  <select id="rating17">
+    <option value="1">1 Star</option>
+    <option value="2">2 Stars</option>
+    <option value="3">3 Stars</option>
+    <option value="4">4 Stars</option>
+    <option value="5">5 Stars</option>
+  </select>
+  <button class="btn" onclick="addReview()">Submit Review</button>
+  <div id="reviewMessage17"></div>
+</div>
+  
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
