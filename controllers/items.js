@@ -43,3 +43,23 @@ exports.getItem = async (req, res) => {
     res.status(500).send('Item fetch failed');
   }
 };
+
+exports.getItemByName = async (req, res) => {
+  const { name } = req.params;
+  try {
+    const conn = await getConnection();
+    const result = await conn.execute(
+      `SELECT * FROM items WHERE name = :name`,
+      [name]
+    );
+    const row = result.rows[0];
+    if (!row) {
+      return res.status(404).send('Item not found');
+    }
+    const item = { id: row[0], name: row[1], /* map rest if needed */ };
+    res.json(item);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error fetching item');
+  }
+};

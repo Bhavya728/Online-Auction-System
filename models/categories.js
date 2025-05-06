@@ -1,12 +1,11 @@
 class Category {
-    constructor({ ID, PARENTCATEGORYID, NAME, DESCRIPTION,  ISACTIVE }) {
-      this.id = ID;
-      this.parentCategoryId = PARENTCATEGORYID;
-      this.name = NAME;
-      this.description = DESCRIPTION;
-      this.isActive = ISACTIVE;
-    }
+  constructor(row) {
+    this.id = row[0];
+    this.parentCategoryId = row[1];
+    this.name = row[2];
+    this.description = row[3];
+    this.isActive = row[4];
   }
-  
-  module.exports = Category;
-  
+}
+
+module.exports = Category;

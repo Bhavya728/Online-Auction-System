@@ -10,6 +10,7 @@ exports.addPhoneNumber = async (req, res) => {
       { userId, phoneNumber },
       { autoCommit: true }
     );
+    console
     res.send('Phone number added successfully');
   } catch (err) {
     console.error(err);

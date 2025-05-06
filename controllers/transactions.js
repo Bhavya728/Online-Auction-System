@@ -14,3 +14,24 @@ exports.addTransaction = async (req, res) => {
     res.status(500).send('Error recording transaction');
   }
 };
+exports.getTransactionByBuyerAuction = async (req, res) => {
+  const { buyerId, auctionId } = req.query;
+  try {
+    const conn = await getConnection();
+    const result = await conn.execute(
+      `SELECT id FROM transactions 
+       WHERE buyerId = :buyerId AND auctionId = :auctionId
+       ORDER BY transactionTimestamp DESC FETCH FIRST 1 ROWS ONLY`,
+      { buyerId, auctionId }
+    );
+    
+    if (result.rows.length === 0) {
+      return res.status(404).send('No transaction found');
+    }
+    
+    res.json({ id: result.rows[0][0] });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Error finding transaction');
+  }
+};
